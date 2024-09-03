@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alternating Link Redirect</title>
+    <script type="text/javascript">
+        // Function to redirect to the alternating link
+        function redirectToAlternatingLink() {
+            // Retrieve the current count from localStorage
+            var count = localStorage.getItem('redirectCount') || 0;
+            count = parseInt(count) + 1; // Increment the count
+
+            // Define your links
+            var links = [
+                "https://forms.gle/5fzjsx7mmD42hCeJ8", // Replace with your first link
+                "https://forms.gle/zxNtgYPZ45bftJ7c6"  // Replace with your second link
+            ];
+
+            // Determine which link to redirect to
+            var redirectLink = links[count % 2]; // Alternate between links
+
+            // Store the updated count back to localStorage
+            localStorage.setItem('redirectCount', count);
+
+            // Redirect to the selected link
+            window.location.href = redirectLink;
+        }
+
+        // Call the function on page load
+        window.onload = redirectToAlternatingLink;
+    </script>
+</head>
+<body>
+    <p>Przekierowywanie do ankiety :)</p>
+</body>
+</html>
